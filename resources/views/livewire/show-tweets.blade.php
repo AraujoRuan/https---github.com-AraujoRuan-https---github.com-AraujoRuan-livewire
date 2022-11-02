@@ -9,14 +9,14 @@
         <button type="submit">Criar Tweet</button>
     </form>
 
-    <hr>
+    <hr> 
 
     @foreach ($tweets as $tweet)
         {{$tweet->user->name}} - {{$tweet->content}} 
         @if($tweet->likes->count())
-           <a href="">Descurtir</a>
+           <a href="#" wire:click.prevent="unilike({{ $tweet->id }})">Descurtir</a>
         @else
-            <a href="">Curtir</a>
+            <a href="#" wire:click.prevent="like({{ $tweet->id }})">Curtir</a>
         @endif       
         <br>
     @endforeach
