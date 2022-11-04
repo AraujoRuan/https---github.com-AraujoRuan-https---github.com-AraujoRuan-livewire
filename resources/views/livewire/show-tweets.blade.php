@@ -12,6 +12,11 @@
     <hr> 
 
     @foreach ($tweets as $tweet)
+        @if ($tweet->user->photo)
+
+        @else
+           <img src="{{ url('imgs/no-image.png')}}" alt="{{ $tweets->user->name }}">
+        @endif
         {{$tweet->user->name}} - {{$tweet->content}} 
         @if($tweet->likes->count())
            <a href="#" wire:click.prevent="unilike({{ $tweet->id }})">Descurtir</a>
